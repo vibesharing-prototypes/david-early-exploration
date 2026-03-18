@@ -117,7 +117,7 @@ function RiskVisualizations({ risks }: { risks: RiskSuggestion[] }) {
                       ))}
                     </Pie>
                     <RechartsTooltip 
-                      formatter={(value: number) => [`${value} risks`, '']}
+                      formatter={(value: number | undefined) => [`${value ?? 0} risks`, '']}
                       contentStyle={{ borderRadius: 8, border: '1px solid #e0e0e0' }}
                     />
                   </PieChart>
@@ -299,7 +299,7 @@ function RiskVisualizations({ risks }: { risks: RiskSuggestion[] }) {
                       ))}
                     </Pie>
                     <RechartsTooltip 
-                      formatter={(value: number) => [`${value} risks`, '']}
+                      formatter={(value: number | undefined) => [`${value ?? 0} risks`, '']}
                       contentStyle={{ borderRadius: 8, border: '1px solid #e0e0e0' }}
                     />
                   </PieChart>

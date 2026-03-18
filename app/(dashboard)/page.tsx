@@ -1028,7 +1028,7 @@ function RiskDiscoveryContent() {
                     
                     const groupedRisks = sourceGroups.map(group => ({
                       ...group,
-                      risks: externalRisks.filter(r => r.sources?.some(s => group.types.includes(s.type))),
+                      risks: externalRisks.filter(r => r.sources?.some(s => (group.types as readonly string[]).includes(s.type))),
                     })).filter(g => g.risks.length > 0);
                     
                     if (groupedRisks.length === 0) {
@@ -1158,7 +1158,7 @@ function RiskDiscoveryContent() {
                         if (sourceFilter === 'external' && !hasExternal) return false;
                         const externalGroup = externalSourceGroups.find(g => sourceFilter === `external_${g.key}`);
                         if (externalGroup) {
-                          const hasMatchingSource = risk.sources?.some(s => s?.type && externalGroup.types.includes(s.type as typeof externalGroup.types[number]));
+                          const hasMatchingSource = risk.sources?.some(s => s?.type && (externalGroup.types as readonly string[]).includes(s.type));
                           if (!hasMatchingSource) return false;
                         }
                       }
